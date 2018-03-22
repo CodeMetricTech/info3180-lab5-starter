@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block main %} 
+ <div class='container' id="formContainer">
+        <h2 class="font-weight-bold display-4">Profiles </h2>
+        <div id="profilesContainer">
+
+
+<div class="d-flex flex-column rounded m-3 px-4 pr-7 p-3 users">
+  <div class=" p-2 d-flex flex-row justify-content-between">
+    <img class="pimg" alt="Profile Image" src="{{ url_for('static', filename="uploads/" + User.filename) }}">
+  
+  <div class=" d-flex flex-column align-content-center text-2 pr-5 p-2 ">
+    <div class="font-weight-bold"></p>{{User.first_name}}  {{User.last_name}}</div>
+    <div>{{User.email}}</div>
+    <div><span class="glyphicon glyphicon-map-marker"></span> {{User.location}}</div>
+    <div>Joined on {{User.created_on}}</div>
+    
+  </div>
+  </div>
+  <h5 class='pl-3'>About Me</h5>
+  <p class="pl-3 pb-3 bio"> {{User.biography}}</p> 
+    
+    <div class=" d-flex justify-content-around">
+        <input type="submit" class="btn btn-success btsize" value="Send Message"/> <input type="submit" class="btn btn-primary btsize" value="Follow"/>
+    </div>
+
+</div>
+
+
+{% endblock %}

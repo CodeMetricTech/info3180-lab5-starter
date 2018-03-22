@@ -11,6 +11,8 @@ from app import app,db
 from flask import render_template, request, redirect, url_for, flash
 from forms import CreateUserForm
 from models import UserProfile
+from genid import generateID #generate userID
+genid=generateID()
 rootdir = os.getcwd()
 
 ###
@@ -36,34 +38,33 @@ def addprofile():
             
             created_on = format_date_joined()
             
-            photo      = userform.photo.data
-            filename   = photo.filename
+            photo       = userform.photo.data
+            filename = photo.filename
             photo.save(os.path.join(app.config['UPLOAD_FOLDER'],filename)) 
             
-            newUser=UserProfile(first_name=firstname,last_name=lastname,email=email,location=location,sex=sex,created_on=created_on,filename=filename,biography=biography)
+            newUser=UserProfile(first_name=firstname,last_name=lastname,email=email,location=location,sex=sex,created_on=created_on,filename=filename)
             db.session.add(newUser)
             db.session.commit()
             
             flash("User Created")
-            return redirect(url_for("viewprofiles"))
+            return render_template("home.html",sex=sex,firstname=firstname,lastname=lastname,email=email,biography=biography,location=location,filename=filename)
         else:
             flash_errors(userform)
 
             
     return render_template('profile.html',form=userform)
-    
+    return render_template('profile.html',form=userform)
   
 
 @app.route('/profiles')
 def viewprofiles():
-    profiles = db.session.query(UserProfile).all()
-    return render_template('profiles.html',profiles=profiles )
+    return render_template('profiles.html')
     
     
-@app.route('/profile/<userid>')
-def userprofile(userid):
-    User = UserProfile.query.get(userid)
-    return render_template("userprofile.html", User=User)
+@app.route('/profile/<username>')
+def userprofile(username):
+    username = 'Bob'
+    return render_template("userprofile.html", name=username)
         
 def format_date_joined():
     """calculates current date and time"""

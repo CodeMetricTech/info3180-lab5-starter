@@ -1,3 +1,80 @@
 body {
     padding-top: 5rem;
 }
+
+.pimg{
+  width: auto;
+  max-width: 200px;
+  height: auto;
+  max-height: 200px;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 22px;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.background{
+    background-color:  #f2f2f2;
+}
+
+.container #formContainer{
+    position: relative;
+    max-width: 700px;
+    background-color: inherit
+
+}
+
+#elementsContainer{
+
+    position: relative;
+    top: 20px;
+    background-color: white;
+    border-top-color: #007bff;
+    border-top-style: solid;
+    border-top-width: 5px;  
+}
+
+.text-1{
+    font-size: 150%;
+}
+
+.text-2{
+    font-size: 120%;
+}
+
+.btsize{
+ width: 160px   
+}
+
+.bio{
+    height: 100px
+}
+
+
+#profilesContainer{
+   position: relative;
+    top: 30px; 
+    
+}
+
+.users{
+    background-color: white;
+    border-top-color: #007bff;
+    border-top-style: solid;
+    border-top-width: 5px;
+}
